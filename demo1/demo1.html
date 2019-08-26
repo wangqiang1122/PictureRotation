@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        #banner {
+            width: 25rem;
+            overflow: hidden;
+        }
+        #banner ul {
+            width: 1000rem;
+            transform: translateX(0px);
+            overflow: hidden;
+        }
+        #banner li {
+            width: 25rem;
+            height: 7.8rem;
+            float: left;
+            line-height: 7.8rem;
+            text-align: center;
+        }
+        #content{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="content">
+        <div id="banner">
+            <ul>
+                <li style="background: yellow">0</li>
+                <li style="background: #00f">1</li>
+                <li style="background: #F0c">2</li>
+                <li style="background: #0fc">3</li>
+                <li style="background: #cf0">4</li>
+                <li style="background: #0f0">5</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./Rotation.js"></script>
+<script>
+
+    new Wrap()
+</script>
+</html>
