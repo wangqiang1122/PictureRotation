@@ -1,8 +1,18 @@
 
     window.document.documentElement.style.fontSize = 20*window.document.documentElement.clientWidth/500+'px';
-    function Wrap() {
-        this.banner = document.getElementById('banner');
-        this.ul = this.banner.getElementsByTagName('ul')[0];
+    function Wrap(obj) {
+        //el 轮播图的父级
+        //autoplay 是否开启动画 默认是不开启
+        if (!(this instanceof Wrap)) {
+            return new Wrap(obj);
+        }
+        // obj的参数
+        this.isautoplay = obj.autoplay||false;
+
+
+        this.banner = obj.el;
+        console.log(this.banner.firstElementChild);
+        this.ul = this.banner.firstElementChild;
         this.oldlen = this.ul.children.length;
         this.liWidth = this.ul.children[1].offsetWidth;
         this.ul.insertBefore(this.ul.children[this.oldlen-1].cloneNode(true),this.ul.childNodes[0]);
@@ -17,14 +27,15 @@
         this.first = true;
         // 初始化
         this.init();
-
-        this.loop = this.auplay();
+        if (this.isautoplay) {
+            this.loop = this.auplay();
+        }
+        return this;
 
     }
     Wrap.prototype.init = function() {
         var that = this;
         this.ul.addEventListener('touchstart',function (ev) {
-            console.log(that.isLoop);
             // 清空定时器 条件是 动画执行完成并且我开始点击
             that.isStart = true;
             if (that.isLoop||that.first) {
@@ -128,14 +139,5 @@
         }
         return a;
     };
-    // 重新定位
-    Wrap.relocation = function () {
-        console.log(this.banner_left);
-        var num = this.banner_left/this.liWidth;
-        if (this.banner_left===0) {
-            Wrap.transform.call(this,-this.oldlen*this.liWidth);
-        } else if (Math.abs(num)>=this.oldlen) {
-            Wrap.transform.call(this,0);
-        }
-    };
+
 

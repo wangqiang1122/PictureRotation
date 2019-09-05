@@ -37,7 +37,7 @@
 <div id="wrap">
     <div id="content">
         <div id="banner">
-            <ul>
+            <ul id="div1">
                 <li style="background: yellow">0</li>
                 <li style="background: #00f">1</li>
                 <li style="background: #F0c">2</li>
@@ -52,6 +52,10 @@
 <script src="./Rotation.js"></script>
 <script>
 
-    new Wrap()
+   var a =  Wrap({
+        el: document.getElementById('banner'),
+       autoplay: false
+    });
+    console.log(a);
 </script>
 </html>
